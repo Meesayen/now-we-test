@@ -2,7 +2,7 @@
 const net = require('net')
 const path = require('path')
 const supertest = require('supertest')
-const ServeCommand = require('now-we-test/commands/serve')
+const serveFn = require('now-we-test/commands/serve')
 
 const lambdas = {
   unrouted: require('../sample-project/lambda.js'),
@@ -29,27 +29,27 @@ describe('commands', () => {
     afterEach(done => (app ? app.close(done) : done()))
 
     it('should have a run method', () => {
-      expect(ServeCommand.run).toBeInstanceOf(Function)
+      expect(serveFn).toBeInstanceOf(Function)
     })
 
     it('should throw when no now.json is found', async () => {
-      await expect(ServeCommand.run([])).rejects.toThrow(/No now\.json found/)
+      await expect(serveFn([])).rejects.toThrow(/No now\.json found/)
     })
 
     it('should start serving when working now.json found', async () => {
-      app = await ServeCommand.run([basePath])
+      app = await serveFn([basePath])
 
       expect(app.listening).toBe(true)
     })
 
     it('should listen on specific port when configured', async () => {
       await expect(isPortAvailable(3001)).resolves.toBe(true)
-      app = await ServeCommand.run([basePath, '--port=3001'])
+      app = await serveFn([basePath, '--port=3001'])
       await expect(isPortAvailable(3001)).resolves.toBe(false)
     })
 
     it('should return 404 when no lambda found on the requested URL', async () => {
-      app = await ServeCommand.run([basePath])
+      app = await serveFn([basePath])
 
       await supertest(app)
         .get('/')
@@ -57,7 +57,7 @@ describe('commands', () => {
     })
 
     it('should run a simple value returning lambda', async () => {
-      app = await ServeCommand.run([basePath])
+      app = await serveFn([basePath])
 
       await supertest(app)
         .get('/simple')
@@ -67,7 +67,7 @@ describe('commands', () => {
     })
 
     it('should run an async value returning lambda', async () => {
-      app = await ServeCommand.run([basePath])
+      app = await serveFn([basePath])
 
       await supertest(app)
         .get('/async')
@@ -77,7 +77,7 @@ describe('commands', () => {
     })
 
     it('should run an response dispatching lambda', async () => {
-      app = await ServeCommand.run([basePath])
+      app = await serveFn([basePath])
 
       await supertest(app)
         .get('/responding')
@@ -87,7 +87,7 @@ describe('commands', () => {
     })
 
     it('should run on unrouted lambdas', async () => {
-      app = await ServeCommand.run([basePath])
+      app = await serveFn([basePath])
 
       await supertest(app)
         .get('/lambda')

@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/lucasconstantino/now-we-test.svg?branch=master)](https://travis-ci.org/lucasconstantino/now-we-test)
 [![coverage](https://img.shields.io/codecov/c/github/lucasconstantino/now-we-test.svg?style=flat-square)](https://codecov.io/github/lucasconstantino/now-we-test)
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![npm version](https://img.shields.io/npm/v/now-we-test.svg?style=flat-square)](https://www.npmjs.com/package/now-we-test)
 
 Temporary lib to help test [Now.sh](https://zeit.co/now) lambdas written in Node.js. It was created with the purpose to eventually be deprecated when [`now dev` command](https://github.com/zeit/now-cli/issues/1681) is released.
@@ -67,19 +66,3 @@ OPTIONS
 
 _See code: [src/commands/serve.js](https://github.com/lucasconstantino/now-we-test/blob/v0.0.0/src/commands/serve.js)_
 
-##### `now-we-test help [COMMAND]`
-
-display help for a now-we-test command
-
-```
-USAGE
-  $ now-we-test help [COMMAND]
-
-ARGUMENTS
-  COMMAND  command to show help for
-
-OPTIONS
-  --all  see all commands in CLI
-```
-
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.4/src/commands/help.ts)_
