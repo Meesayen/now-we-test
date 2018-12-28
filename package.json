@@ -4,7 +4,8 @@
   "version": "0.3.0",
   "author": "Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
   "bin": {
-    "now-we-test": "./bin/run"
+    "nwt": "./bin/run",
+    "nwt-ts": "./bin/run-ts"
   },
   "bugs": {
     "url": "https://github.com/meesayen/now-we-test/issues"
@@ -15,9 +16,9 @@
     "glob": "^7.1.3",
     "invariant": "^2.2.4",
     "micro": "^9.3.3",
-    "mri": "^1.1.4",
     "minimatch": "^3.0.4",
     "morgan": "^1.9.1",
+    "mri": "^1.1.4",
     "named-regexp-groups": "^1.0.3",
     "supertest": "^3.3.0"
   },
@@ -27,6 +28,10 @@
     "eslint-config-taller": "^2.0.0",
     "globby": "^8",
     "jest": "^23.1.0"
+  },
+  "peerDependencies": {
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
   },
   "files": [
     "/bin",

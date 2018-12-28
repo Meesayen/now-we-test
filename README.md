@@ -43,18 +43,15 @@ _Now we test_ provides a simple CLI to serve your lambdas locally - useful for t
 
 > Keep in mind there is only so much it can do in terms of simulation, so you should never completelly trust what works locally would necessarily work on Now.sh environment.
 
-#### Commands
-
-- [`now-we-test serve`](#now-we-test-serve)
-- [`now-we-test help [COMMAND]`](#now-we-test-help-command)
-
-##### `now-we-test serve`
+##### `nwt`
 
 Serves the lambdas locally
 
+Use `nwt-ts` if you have lambdas written in Typescript
+
 ```
 USAGE
-  $ now-we-test serve [PATH]
+  $ nwt [PATH]
 
 ARGUMENTS
   PATH  [default: .] The path to the directory where now.json stands
